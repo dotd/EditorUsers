@@ -18,10 +18,22 @@ How to Create a React App with a Node Backend: The Complete Guide https://www.fr
  npm i express
 
  # The server will be under folder "server"
-  ```
+ # Run the server
+ node app.js
+ ```
 
-  # How to build the client
+  # How to build the client with React
   ```
   # Create client folder under the project
-  npx create-react-app client
+  npx create-react-app editor_page
+  # Run the React
+  npm start
+
+  ```
+
+  # General
+  See who listens on specific port:
+  ```
+  # Who is listen on port 3001?
+  lsof -nP -i4TCP:3001 | grep LISTEN
   ```

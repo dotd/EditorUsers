@@ -11,7 +11,10 @@
   "author": "Dotan Di Castro",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "draft-js": "^0.11.7",
+    "express": "^4.18.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "engines": {
     "node": "16.16.0"
