@@ -4,10 +4,6 @@ import { EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import styled from "styled-components";
 
-function clickMe() {
-  alert("You clicked me!");
-}
-
 const theme = {
   blue: {
     default: "#3f51b5",
@@ -45,12 +41,24 @@ Button.defaultProps = {
 };
 
 export default function MyEditor() {
+  
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+
   useEffect(() => {
     console.log(editorState);
   }, [editorState]);
+
+  // This is something related to a warning. https://stackoverflow.com/questions/50162522/cant-call-setstate-on-a-component-that-is-not-yet-mounted
+  function SAFE_componentWillMount() {
+    this.clickSave = this.clickSave.bind(this);
+  };
+
+  function clickSave(value) {
+    console.log("click save event." + value.getCurrentContent().getPlainText())
+  }
+
   return (
     <div>
       <h2>Editor</h2>
@@ -61,7 +69,7 @@ export default function MyEditor() {
         />
       </div>
       <div>
-        <Button onClick={clickMe}>Save</Button>
+        <Button onClick={() => clickSave(editorState)}>Save</Button>
       </div>
     </div>
   );
